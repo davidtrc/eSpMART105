@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single"
+        android:id="@+id/nav_draw_group1">
+        <item
+            android:id="@+id/nav_main"
+            android:icon="@drawable/ic_person_outline"
+            android:title="@string/main_view" />
+        <!--
+        <item
+            android:id="@+id/nav_esp32"
+            android:icon="@drawable/ic_memory_black"
+            android:title="@string/connect_to_esp32" />
+            -->
+        <item
+            android:id="@+id/nav_valoriza"
+            android:icon="@drawable/ic_connect_valoriza"
+            android:title="@string/connect_to_valoriza" />
+        <!--
+        <item
+            android:id="@+id/nav_pebble"
+            android:icon="@drawable/ic_watch"
+            android:title="@string/connect_to_pebble" />
+            -->
+        <item
+            android:id="@+id/nav_searchp"
+            android:icon="@drawable/ic_search_patient"
+            android:title="@string/search_patient" />
+        <item
+            android:id="@+id/nav_addp"
+            android:icon="@drawable/ic_add_patient"
+            android:title="@string/add_patient" />
+    </group>
+
+    <item android:title="@string/nav_configuration"
+        android:id="@+id/nav_draw_group2">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_settings"
+                    android:icon="@drawable/ic_settings"
+                    android:title="@string/nav_settings" />
+                <item
+                    android:id="@+id/nav_aboutb105"
+                    android:icon="@drawable/ic_details_about"
+                    android:title="@string/nav_aboutb105" />
+                <item
+                    android:id="@+id/nav_aboutvaloriza"
+                    android:icon="@drawable/ic_details_about"
+                    android:title="@string/nav_aboutvaloriza" />
+            </group>
+        </menu>
+    </item>
+
+
+</menu>

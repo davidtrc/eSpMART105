@@ -1,0 +1,12 @@
+Output: NC Drill Files
+Type  : NC Drill
+From  : Project [LiPo_1S_Protection_Circuit.PrjPcb]
+   Generated File[LiPo_1S_Protection_Circuit.TXT]
+   Generated File[LiPo_1S_Protection_Circuit.LDP]
+   Generated File[LiPo_1S_Protection_Circuit.DRR]
+
+
+Files Generated   : 3
+Documents Printed : 0
+
+Finished Output Generation At 18:35:16 On 19/07/2017

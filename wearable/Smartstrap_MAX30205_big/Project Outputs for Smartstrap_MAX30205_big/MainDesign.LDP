@@ -1,0 +1,3 @@
+Layer Pairs Export File for PCB: C:\Users\david\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_MAX30205_big\MainDesign.PcbDoc
+LayersSetName=Top_Bot_Thru_Holes|DrillFile=maindesign-roundholes.txt|DrillLayers=gtl,gbl
+LayersSetName=Top_Bot_Slot_Holes|DrillFile=maindesign-slotholes.txt|DrillLayers=gtl,gbl

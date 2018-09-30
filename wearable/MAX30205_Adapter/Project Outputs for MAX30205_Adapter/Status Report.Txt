@@ -1,0 +1,19 @@
+Output: Gerber Files
+Type  : Gerber
+From  : Variant [[No Variations]] of Project [MAX30205_Adapter.PrjPcb]
+   Generated File[Adapter.GTL]
+   Generated File[Adapter.GBL]
+   Generated File[Adapter.GTO]
+   Generated File[Adapter.GTS]
+   Generated File[Adapter.GBS]
+   Generated File[Adapter.GBO]
+   Generated File[Adapter.GM1]
+   Generated File[Adapter.RUL]
+   Generated File[Adapter.EXTREP]
+   Generated File[Adapter.REP]
+
+
+Files Generated   : 10
+Documents Printed : 0
+
+Finished Output Generation At 18:57:21 On 12/07/2017

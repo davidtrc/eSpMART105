@@ -1,0 +1,14 @@
+Component   : MRF24J40MA
+PCB Library : agus_lib.PcbLib
+Date        : 16/09/2013
+Time        : 14:24:07
+
+
+
+Dimension : 20.523 x 28.092 mm
+
+ Layer(s)              Pads(s)  Tracks(s)  Fill(s)  Arc(s)  Text(s)
+--------------------------------------------------------------------
+ Top Overlay                 0          1        0       1        0
+--------------------------------------------------------------------
+ Total                       0          1        0       1        0

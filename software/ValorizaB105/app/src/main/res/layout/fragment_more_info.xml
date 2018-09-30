@@ -1,0 +1,541 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.lazaro.b105.valorizab105.fragments.More_info_fragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/light_grey"
+        android:orientation="horizontal">
+
+
+        <LinearLayout
+            android:id="@+id/mf_see_layout_photo_and_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:id="@+id/mf_see_layout_photo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linearLayout"
+                android:orientation="vertical"
+                android:weightSum="1">
+
+                <ImageView
+                    android:id="@+id/mf_see_patient_photo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginTop="10dp"
+                    android:adjustViewBounds="true"
+                    android:maxHeight="150dp"
+                    android:maxWidth="150dp"
+                    app:srcCompat="@drawable/paciente1" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/mf_linearLayout"
+                android:layout_marginLeft="10dp"
+                android:layout_toEndOf="@+id/mf_see_layout_photo"
+                android:layout_toRightOf="@+id/mf_see_layout_photo"
+                android:orientation="vertical"
+                android:weightSum="1">
+
+                <TextView
+                    android:id="@+id/mf_see_patient_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="José Ramón González Río"
+                    android:textColor="@color/blue_valoriza_dark"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/mf_see_gender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/my_toolbar"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/gender"
+                    android:textColor="@color/blue_valoriza_light"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/mf_see_age"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/my_toolbar"
+                    android:layout_marginTop="0dp"
+                    android:text="@string/age_two_dots"
+                    android:textColor="@color/blue_valoriza_light"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/mf_see_blood_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/my_toolbar"
+                    android:layout_marginTop="0dp"
+                    android:text="@string/blood_type"
+                    android:textColor="@color/blue_valoriza_light"
+                    android:textSize="15sp" />
+                <TextView
+                    android:id="@+id/mf_see_center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/my_toolbar"
+                    android:layout_marginTop="0dp"
+                    android:text="@string/center"
+                    android:textColor="@color/blue_valoriza_light"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/mf_see_pebble_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/my_toolbar"
+                    android:layout_marginTop="0dp"
+                    android:text="@string/pebble_ID"
+                    android:textColor="@color/blue_valoriza_light"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/mf_see_layout_first_cardpair"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="2"
+            android:layout_below="@+id/mf_see_layout_photo_and_info"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/light_grey"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/mf_see_temp_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="left"
+                    card_view:cardElevation="3dp"
+                    card_view:cardUseCompatPadding="true"
+                    app:cardCornerRadius="3dp">
+
+                    <!-- Content -->
+                    <LinearLayout
+                        android:id="@+id/mf_see_temp_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginTop="10dp"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/mf_see_temp_icon"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:adjustViewBounds="true"
+                                android:maxHeight="50dp"
+                                app:srcCompat="@drawable/thermometer_main" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/mf_see_temperature"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:text="@string/temperature"
+                                    android:textColor="@color/blue_valoriza_dark"
+                                    android:textSize="17sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/mf_see_temp_value"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:text=" 36,6 ºC"
+                                    android:textColor="@color/blue_valoriza_dark"
+                                    android:textSize="20sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/mf_see_saturation_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    card_view:cardElevation="3dp"
+                    card_view:cardUseCompatPadding="true"
+                    app:cardCornerRadius="3dp">
+
+                    <!-- Content -->
+                    <LinearLayout
+                        android:id="@+id/mf_see_sat_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginTop="10dp"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/mf_see_saturation_icon"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="5dp"
+                                android:adjustViewBounds="true"
+                                android:maxHeight="40dp"
+                                android:maxWidth="40dp"
+                                app:srcCompat="@drawable/saturation_main" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="5dp"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/mf_see_saturation"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="@string/saturation"
+                                    android:textColor="@color/blue_valoriza_dark"
+                                    android:textSize="17sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/mf_see_sat_value"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text=" 99 %"
+                                    android:textColor="@color/blue_valoriza_dark"
+                                    android:textSize="20sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/mf_see_layout_second_card_pair"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="2"
+            android:layout_below="@+id/mf_see_layout_first_cardpair"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/mf_see_hr_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="left"
+                    card_view:cardElevation="3dp"
+                    card_view:cardUseCompatPadding="true"
+                    app:cardCornerRadius="3dp">
+
+                    <!-- Content -->
+
+                    <LinearLayout
+                        android:id="@+id/mf_see_hr_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginTop="10dp"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/mf_see_hr_icon"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="5dp"
+                                android:adjustViewBounds="true"
+                                android:maxHeight="30dp"
+                                android:maxWidth="40dp"
+                                app:srcCompat="@drawable/hr_main" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="5dp"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/mf_see_hr"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:text="@string/hr_cards"
+                                    android:textColor="@color/blue_valoriza_dark"
+                                    android:textSize="17sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginTop="5dp"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/mf_see_hr_value"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:text="100 ppm"
+                                    android:textColor="@color/blue_valoriza_dark"
+                                    android:textSize="20sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/mf_see_steps_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    card_view:cardElevation="3dp"
+                    card_view:cardUseCompatPadding="true"
+                    app:cardCornerRadius="3dp">
+
+                    <!-- Content -->
+                    <LinearLayout
+                        android:id="@+id/mf_see_steps_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginTop="10dp"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/mf_see_steps_icon"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:adjustViewBounds="true"
+                                android:maxHeight="40dp"
+                                android:maxWidth="35dp"
+                                app:srcCompat="@drawable/steps_main" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="5dp"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/mf_see_steps"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:text="@string/steps"
+                                    android:textColor="@color/blue_valoriza_dark"
+                                    android:textSize="17sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/mf_see_steps_value"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:text="12.000"
+                                    android:textColor="@color/blue_valoriza_dark"
+                                    android:textSize="20sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_below="@+id/mf_see_layout_second_card_pair">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:id="@+id/mf_linearLayout7">
+
+                <TextView
+                    android:id="@+id/mf_textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/clinical_history"
+                    android:textSize="24dp"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/blue_valoriza"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/mf_see_history_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:layout_below="@+id/mf_linearLayout7">
+
+                <TextView
+                    android:id="@+id/mf_see_clinical_history"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="14dp"
+                    android:layout_marginLeft="5dp"
+                    android:maxLines = "20"
+                    android:scrollbars = "vertical"
+                    android:textColor="@color/blue_valoriza_dark"
+                    android:text="@string/no_history" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</FrameLayout>

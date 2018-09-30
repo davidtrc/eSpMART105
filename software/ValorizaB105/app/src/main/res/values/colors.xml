@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#6f9ae5</color>
+    <color name="black">#000000</color>
+    <color name="blue_valoriza">#053385</color>
+    <color name="blue_valoriza_light">#6f9ae5</color>
+    <color name="blue_valoriza_dark">#3f6dbf</color>
+    <color name="white">#FFFFFF</color>
+    <color name="green_connected">#339933</color>
+    <color name="red_unconnected">#ff3300</color>
+    <color name="light_grey">#f4f4f4</color>
+
+    <!-- <color name="colorAccent">#FF4081</color> -->
+
+</resources>

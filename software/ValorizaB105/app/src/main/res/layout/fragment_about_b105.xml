@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.lazaro.b105.valorizab105.fragments.Add_patient_fragment">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="vertical" android:layout_width="fill_parent"
+            android:layout_height="fill_parent" android:gravity="center">
+
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/logob105" />
+
+            <TextView
+                android:id="@+id/b105_link"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/click_valoriza_link"
+                android:textColorLink="@color/blue_valoriza_light"
+                android:textColor="@color/blue_valoriza_light"
+                android:gravity="center_horizontal"
+                android:textSize="20dp"
+                android:paddingTop="20dp"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</FrameLayout>

@@ -1,0 +1,19 @@
+----------------------------------------------------------------------------------------------------------------------------------
+NCDrill File Report For: MainDesign.PcbDoc   12/07/2017  19:09:21
+----------------------------------------------------------------------------------------------------------------------------------
+
+Layer Pair : Top Layer to Bottom Layer
+ASCII RoundHoles File : MainDesign-RoundHoles.TXT
+ASCII SlotHoles File : MainDesign-SlotHoles.TXT
+
+Tool       Hole Size               Hole Tolerance               Hole Type       Hole Count   Plated         Tool Travel
+----------------------------------------------------------------------------------------------------------------------------------
+T1      0.3mm (12mil)                                             Round             63        PTH        202.49mm (7.97inch)
+T2      0.4mm (16mil)                                             Round             6         PTH        32.90mm (1.30inch)
+T3      0.5mm (20mil)                                             Round             8         PTH        68.65mm (2.70inch)
+T4      0.6mm (24mil)                                             Round             7         PTH        41.74mm (1.64inch)
+T5      0.7mm (28mil)                                             Slot              4         PTH        25.16mm (0.99inch)
+----------------------------------------------------------------------------------------------------------------------------------
+Totals                                                                              88
+
+Total Processing Time (hh:mm:ss) : 00:00:00

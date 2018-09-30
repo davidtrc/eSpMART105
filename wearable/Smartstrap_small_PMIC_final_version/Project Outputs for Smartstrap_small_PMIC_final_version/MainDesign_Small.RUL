@@ -1,0 +1,5 @@
+DRC Rules Export File for PCB: C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small_PMIC_final_version\MainDesign_Small.PcbDoc
+RuleKind=Clearance|RuleName=Clearance|Scope=Board|Minimum=5.91
+RuleKind=Width|RuleName=Width|Scope=Board|Minimum=5.91
+RuleKind=ShortCircuit|RuleName=ShortCircuit|Scope=Board|Allowed=0
+RuleKind=SolderMaskExpansion|RuleName=SolderMaskExpansion|Scope=Board|Minimum=4.00

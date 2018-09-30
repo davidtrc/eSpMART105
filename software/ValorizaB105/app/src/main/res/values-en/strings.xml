@@ -1,0 +1,201 @@
+<resources>
+    <string name="app_name">ValorizaB105</string>
+    <string name="main_label">Main</string>
+    <string name="aboutvaloriza_label">About Valoriza</string>
+    <string name="aboutb105_label">About B105</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Configuration</string>
+    <string name="action_return_home">Start</string>
+    <string name="connect_to_valoriza">Connect to Valoriza</string>
+    <string name="connect_to_esp32">Connect to eSpMART105</string>
+    <string name="connect_to_pebble">Connect to Pebble</string>
+    <string name="search_patient">Search patient</string>
+    <string name="add_patient">Add patient</string>
+    <string name="nav_configuration">Configuration</string>
+    <string name="nav_settings">Settings</string>
+    <string name="nav_aboutb105">About B105 ESL</string>
+    <string name="nav_aboutvaloriza">About Valoriza</string>
+    <string name="main_view">Main View</string>
+    <string name="find_by_center_button">Search by nursing home</string>
+    <string name="find_by_name_button">Search by patient\'s name</string>
+
+    <string name="valoriza_servicios">Valoriza Servicios</string>
+    <string name="colaboration_with_b105">In collaboration with B105 ESL</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="db_results">Search results</string>
+    <string name="click_valoriza_link">Click here to visit their website</string>
+    <string name="click_b105_link">Click here to visit their website</string>
+    <string name="connected_to_patient">Connected</string>
+    <string name="unconnected_to_patient">No connected</string>
+    <string name="connected_to_patient1">Last patient connected:</string>
+    <string name="no_patient">There are not patients in database</string>
+    <string name="no_record">No records</string>
+    <string name="temperature">Temperature: </string>
+    <string name="hr">Heart Rate / Variability: </string>
+    <string name="hr_cards">Heart Rate:</string>
+    <string name="saturation">02 Saturation: </string>
+    <string name="steps">Steps: </string>
+    <string name="steps2">Steps</string>
+    <string name="connecting">Connecting...</string>
+    <string name="connected_to">Connected to the Pebble with ID: </string>
+    <string name="pebble_ID">ESP32 ID: </string>
+    <string name="connect_to_another_wifi">Connect to another Wi-Fi</string>
+    <string name="connect_to_wifi">Connect to a Wi-Fi access point</string>
+    <string name="unconnected_wifi">No connected to a Wi-Fi access point</string>
+    <string name="connected_to_wifi">Connected to Wi-Fi: </string>
+    <string name="temp_registers">Temperature records</string>
+    <string name="hr_registers">Heart Rate records</string>
+    <string name="sat_registers">02 saturation records</string>
+    <string name="steps_registers">Steps records</string>
+    <string name="measure_now">Measure now</string>
+    <string name="empty_register">Empty register</string>
+    <string name="name">Name:</string>
+    <string name="gender">Gender:</string>
+    <string name="blood_type">Blood type:</string>
+    <string name="clinical_history">Clinical history:</string>
+    <string name="no_history">No clinical history</string>
+    <string name="delete_patient">Delete patient</string>
+    <string name="confirm_delete">Do you want to delete the patient?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="hr_invalid">Pebble no dispone de datos de ritmo cardíaco. Espere un tiempo y vuelva a intentarlo</string>
+    <string name="steps_invalid">Pebble no dispone de datos de pasos. Espere un tiempo y vuelva a intentarlo</string>
+    <string name="take_photo">Take picture</string>
+    <string name="choose_from_gallery">Choose from gallery</string>
+    <string name="add_photo">Add picture</string>
+    <string name="see_patient">See patient</string>
+    <string name="clinical_history_2">Clinical history...</string>
+    <string name="name2">Name</string>
+    <string name="update_patient">Update patient</string>
+    <string name="edit_patient">Edit patient</string>
+    <string name="name_not_empty">Name cannot be empty</string>
+    <string name="photo_not_empty">Add a picture before adding the patient</string>
+    <string name="sucessfully_added">Patient successfully added</string>
+    <string name="pebble_already_associated">eSpMART105 already associated with a patient. Try again</string>
+    <string name="sucessfully_updated">Patient correctly updated</string>
+    <string name="error_updating">Fail updating. Contact with application developer</string>
+    <string name="name_not_empty2">Write first a name</string>
+    <string name="searching">Searching... Wait</string>
+    <string name="patient_doesnt_exist">Patient did not exists</string>
+    <string name="center_not_empty">Write first a name</string>
+    <string name="no_patients">There is no patients</string>
+    <string name="connect_to_patient">Connect to patient</string>
+    <string name="choose_refresh_time">Choose the measures frequency</string>
+    <string name="halfhour">30 minutes</string>
+    <string name="onehour">60 minutes</string>
+    <string name="twohours">120 minutes</string>
+    <string name="threehours">180 minutes</string>
+    <string name="fivehours">300 minutes</string>
+    <string name="minutes">minutes</string>
+    <string name="bt_disabled">Bluetooth is turned-off or it is not compatible</string>
+    <string name="location_disabled">Location is turned-off</string>
+    <string name="connecting_to">Connecting to</string>
+    <string name="connected">Connected</string>
+    <string name="age">Age</string>
+    <string name="residence">Nursing home</string>
+    <string name="residence_hint">Nursing home name</string>
+    <string name="age_out_of_bounds">Age should be between </string>
+    <string name="and"> and </string>
+    <string name="never">Never</string>
+    <string name="last_time_connected">Last time connected: </string>
+    <string name="new_esp32">New eSpMART105 detected</string>
+    <string name="esp32_not_associated">A new eSpMART105 not associated with any patient has been found. Do you want to associate it with the current patient?</string>
+    <string name="esp32_battery">eSpMART105 battery: </string>
+    <string name="warning">URGENT WARNING</string>
+    <string name="parameters_out_of_range">Next parameters are out of the ranges considered normal:</string>
+    <string name="accept">Accept</string>
+    <string name="low_battery">eSpMART105 low battery:</string>
+    <string name="hr_variability">RC variability:</string>
+    <string name="search_hint">Patient name or nursing home</string>
+    <string name="center">Nursing home:</string>
+    <string name="age_two_dots">Age:</string>
+    <string name="measure_each">Measure each</string>
+    <string name="hours_and"> hours and</string>
+    <string name="press_esp32_button">Switch the eSpMART105 button two times. Wait for it to end the measures. Discovered devices will appear above</string>
+    <string name="find_patients">Search patiens</string>
+    <string name="searching_wait">Searching... Wait</string>
+    <string name="unnamed">Unnamed</string>
+    <string name="no_associated">Not associated to any patient</string>
+    <string name="associated_to">Associated to:</string>
+    <string name="to_be_included">This feature will be included in the next version of the application</string>
+    <string name="ppm">ppm</string>
+    <string name="ms">ms</string>
+    <string name="percetage">%</string>
+    <string name="degrees">ºC</string>
+    <string name="set_new_value">Set a new value</string>
+    <string name="ok">Accept</string>
+    <string name="cancel">Cancel</string>
+    <string name="more_info">More information</string>
+    <string name="find_close_patients">Find near patients</string>
+
+    <string-array name="blood_type_array">
+        <item>A+</item>
+        <item>A-</item>
+        <item>B+</item>
+        <item>B-</item>
+        <item>AB+</item>
+        <item>AB-</item>
+        <item>O+</item>
+        <item>O-</item>
+    </string-array>
+
+    <string-array name="gender_array">
+        <item>Man</item>
+        <item>Woman</item>
+        <item>Other</item>
+    </string-array>
+
+    <string name="last_connected_patient">Last patient connected</string>
+    <string name="app_mode">Application use mode</string>
+    <string name="temp_time">Measure temp. every:</string>
+    <string name="sat_time">Measure SpO2 every:</string>
+    <string name="hr_time">Measure HR every:</string>
+    <string name="steps_time">Measure steps every:</string>
+    <string name="max_hr">Maximum HR: </string>
+    <string name="min_hr">Minimum HR: </string>
+    <string name="max_variability">Maximum variability: </string>
+    <string name="min_sat">Minimum SpO2: </string>
+    <string name="max_temp">Maximum temperature: </string>
+    <string name="min_temp">Minimum temperature: </string>
+
+    <string name="admin">Administrator</string>
+
+    <string name="edit_falls_form">Edit falls form</string>
+    <string name="falls_form_label">Falls Form</string>
+    <string name="bones_condition">Bones condition</string>
+    <string name="muscle_condition">Muscles condition</string>
+    <string name="previous_falls">Previous falls</string>
+    <string name="mobility_degree">Mobility Degree</string>
+    <string name="usually_faint">Does the patient usually faints?</string>
+    <string name="update_form">Update form</string>
+
+    <string-array name="degree_array">
+        <item>Extremely good</item>
+        <item>Good</item>
+        <item>Normal</item>
+        <item>Poor</item>
+        <item>Extremely poor</item>
+    </string-array>
+
+    <string-array name="yes_no_array">
+        <item>No</item>
+        <item>Yes</item>
+    </string-array>
+
+    <string name="bluetooth_needed">Bluetooth needed</string>
+    <string name="bluetooth_warning">Bluetooth must be turned on to use the app. App will close.</string>
+    <string name="fail_add_patient">Fail when adding the patient. Contact the application developer</string>
+
+    <string name="none">None</string>
+    <string name="NEVER">NEVER</string>
+    <string name="bpm_ms"> bpm/ms</string>
+
+    <string name="fall_detected">Fall detected with probability of </string>
+    <string name="fall_notified">Patient reports a fall.</string>
+
+
+</resources>

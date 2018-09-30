@@ -1,0 +1,12 @@
+Output: NC Drill Files
+Type  : NC Drill
+From  : Project [Smartstrap_small_PMIC.PrjPcb]
+   Generated File[MainDesign_Small.TXT]
+   Generated File[MainDesign_Small.LDP]
+   Generated File[MainDesign_Small.DRR]
+
+
+Files Generated   : 3
+Documents Printed : 0
+
+Finished Output Generation At 12:27:45 On 09/02/2018

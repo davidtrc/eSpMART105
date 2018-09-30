@@ -1,0 +1,96 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.lazaro.b105.valorizab105.fragments.Connect_valoriza_fragment">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/linearLayout8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:orientation="horizontal"
+            android:paddingBottom="20dp">
+
+            <TextView
+                android:id="@+id/connected_to_wifi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingTop="10dp"
+                android:text="Conectado al Wi-Fi: "
+                android:textColor="@color/blue_valoriza"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingTop="10dp"
+            android:orientation="horizontal"
+
+            android:layout_above="@+id/linearLayout9">
+
+            <TextView
+                android:id="@+id/wifi_ssid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:layout_weight="1"
+                android:text="B105-NET"
+
+                android:textColor="@color/blue_valoriza"
+                android:textSize="20dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_below="@+id/linearLayout8">
+
+            <ImageView
+                android:id="@+id/wifi_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:maxHeight="200dp"
+
+                app:srcCompat="@drawable/wifi_icon" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:gravity="bottom"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp"
+            android:layout_below="@+id/linearLayout8"
+            android:id="@+id/linearLayout9">
+
+            <Button
+                android:id="@+id/connect_wifi_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/blue_valoriza_dark"
+                android:gravity="center"
+                android:text="@string/connect_to_another_wifi"
+                android:textColor="@color/white"></Button>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</FrameLayout>

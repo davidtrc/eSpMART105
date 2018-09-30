@@ -1,0 +1,19 @@
+Output: Gerber Files
+Type  : Gerber
+From  : Variant [[No Variations]] of Project [Smartstrap_MAX30205_big.PrjPcb]
+   Generated File[MainDesign.GTL]
+   Generated File[MainDesign.GBL]
+   Generated File[MainDesign.GTO]
+   Generated File[MainDesign.GTS]
+   Generated File[MainDesign.GBS]
+   Generated File[MainDesign.GBO]
+   Generated File[MainDesign.GM1]
+   Generated File[MainDesign.RUL]
+   Generated File[MainDesign.EXTREP]
+   Generated File[MainDesign.REP]
+
+
+Files Generated   : 10
+Documents Printed : 0
+
+Finished Output Generation At 19:11:02 On 12/07/2017

@@ -1,0 +1,713 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 8em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD18\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">11/04/2018</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">21:04:54</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:00</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc" class="file"><acronym title="C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc">C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">127</td></tr>
+</table>
+</td>
+</table><a name="IDZV2KPYP0LOZYERYLRZTWIV0TBLAXC12TRE0Q4DPBXL03QVCXGRBE"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDK5BFY2HE0XY1EHHHFBJGTRBPKJTVUVRK4QDDZEOZU4QVZYZWKDOO">Clearance Constraint (Gap=0.15mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDZRP42I0D2GA1G3XQFD1S425HVILVU5STHEX0RGNMAT3ZH43JPJ3J">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDSDQEXSZNJD5AH0QVLTEXNV4YVLYQ1GATYR0RSGDBSACTZKJRWBH">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDQC2ZEZSE1FFHI3CV1Z3XC3RTEDSY5TWZTN423EEDOP4BOAU2OKCG">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDLQYV4JN5Y05DNZIXR0R2UKIUDDJ3UK0ICA3YXMJVPXQVLDHYSQFJ">Width Constraint (Min=0.15mm) (Max=10mm) (Preferred=0.25mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDHCRFJPRACSDPCLQXQGKYGVXXKNHXVWG34G1CN4EHIKI41IHIOD3O">Power Plane Connect Rule(Relief Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDVA23RXYANARZGD5P1NHOW55WAJVCWYCCSEJWZMN0RV5XKQWW2CSD">Hole Size Constraint (Min=0.3mm) (Max=6.3mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDQAG1KXGUVRABD50NLPPHUJ5HZLEZUTJ55E0TOPDNYZO4LUNRSULL">Hole To Hole Clearance (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDJJGKHJJGJ4KMI05DRWF0P051QWPMIDMHM4UN5GQFI4WROZNTBLF">Minimum Solder Mask Sliver (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">127</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDIJ1GLT1FABMUHGR2ZFC4VAQOYIJ1ALTHGU5VTSIXW0KJPIQGASCB">Silk To Solder Mask (Clearance=0mm) (IsPad),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDUZKE2AZGDRXZC2DZFRZZ0OGFMPJ4I33NAPKPBCOH3LDJRJWC0BU">Silk to Silk (Clearance=0mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDRC5URLAGEBSIMIRLSVMHTKGFZJG2BJASYK5NQBDJ5223IB02WU1K">Net Antennae (Tolerance=0mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID1PVSRVWBZQXEMXT4W3XVOWHU3L1GPDT03WLWQ3JCLMEVSQ1EXMDB">Height Constraint (Min=0mm) (Max=25.4mm) (Prefered=12.7mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDGWZZ0VM00GLKFWPJYYYOGZUETLAQN41T0BMSDUF4HAYGDZSETIYF">Silk primitive without silk layer</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">127</td>
+</tr>
+</table><br><a name="IDJJGKHJJGJ4KMI05DRWF0P051QWPMIDMHM4UN5GQFI4WROZNTBLF"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Minimum Solder Mask Sliver (Gap=0.254mm) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3674.091mil|Location2.X=3685.341mil|Location1.Y=3500.847mil|Location2.Y=3512.097mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3674.091mil|Location2.X=3685.341mil|Location1.Y=3500.847mil|Location2.Y=3512.097mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.05mm &lt; 0.254mm) Between Pad 1-1(93.99mm,88.814mm) on Bottom Layer And Pad 1-2(93.99mm,89.314mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.05mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3847.32mil|Location2.X=3858.57mil|Location1.Y=3500.847mil|Location2.Y=3512.097mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3847.32mil|Location2.X=3858.57mil|Location1.Y=3500.847mil|Location2.Y=3512.097mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.05mm &lt; 0.254mm) Between Pad 1-10(98.39mm,88.814mm) on Bottom Layer And Pad 1-9(98.39mm,89.314mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.05mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3674.091mil|Location2.X=3685.341mil|Location1.Y=3520.532mil|Location2.Y=3531.782mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3674.091mil|Location2.X=3685.341mil|Location1.Y=3520.532mil|Location2.Y=3531.782mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.05mm &lt; 0.254mm) Between Pad 1-2(93.99mm,89.314mm) on Bottom Layer And Pad 1-3(93.99mm,89.814mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.05mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3674.091mil|Location2.X=3685.341mil|Location1.Y=3540.218mil|Location2.Y=3551.468mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3674.091mil|Location2.X=3685.341mil|Location1.Y=3540.218mil|Location2.Y=3551.468mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.05mm &lt; 0.254mm) Between Pad 1-3(93.99mm,89.814mm) on Bottom Layer And Pad 1-4(93.99mm,90.314mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.05mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3674.091mil|Location2.X=3685.341mil|Location1.Y=3559.903mil|Location2.Y=3571.153mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3674.091mil|Location2.X=3685.341mil|Location1.Y=3559.903mil|Location2.Y=3571.153mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.05mm &lt; 0.254mm) Between Pad 1-4(93.99mm,90.314mm) on Bottom Layer And Pad 1-5(93.99mm,90.814mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.05mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3847.32mil|Location2.X=3858.57mil|Location1.Y=3559.903mil|Location2.Y=3571.153mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3847.32mil|Location2.X=3858.57mil|Location1.Y=3559.903mil|Location2.Y=3571.153mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.05mm &lt; 0.254mm) Between Pad 1-6(98.39mm,90.814mm) on Bottom Layer And Pad 1-7(98.39mm,90.314mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.05mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3847.32mil|Location2.X=3858.57mil|Location1.Y=3540.218mil|Location2.Y=3551.468mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3847.32mil|Location2.X=3858.57mil|Location1.Y=3540.218mil|Location2.Y=3551.468mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.05mm &lt; 0.254mm) Between Pad 1-7(98.39mm,90.314mm) on Bottom Layer And Pad 1-8(98.39mm,89.814mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.05mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3847.32mil|Location2.X=3858.57mil|Location1.Y=3520.532mil|Location2.Y=3531.782mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3847.32mil|Location2.X=3858.57mil|Location1.Y=3520.532mil|Location2.Y=3531.782mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.05mm &lt; 0.254mm) Between Pad 1-8(98.39mm,89.814mm) on Bottom Layer And Pad 1-9(98.39mm,89.314mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.05mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3496.281mil|Location2.X=3507.531mil|Location1.Y=3273.41mil|Location2.Y=3284.66mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3496.281mil|Location2.X=3507.531mil|Location1.Y=3273.41mil|Location2.Y=3284.66mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.122mm &lt; 0.254mm) Between Pad C10-1(89.45mm,83.9mm) on Bottom Layer And Pad C12-1(89.45mm,82.675mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.122mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3496.281mil|Location2.X=3507.531mil|Location1.Y=3321.639mil|Location2.Y=3332.889mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3496.281mil|Location2.X=3507.531mil|Location1.Y=3321.639mil|Location2.Y=3332.889mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.122mm &lt; 0.254mm) Between Pad C10-1(89.45mm,83.9mm) on Bottom Layer And Pad C8-2(89.45mm,85.125mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.122mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3441.162mil|Location2.X=3452.412mil|Location1.Y=3273.41mil|Location2.Y=3284.66mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3441.162mil|Location2.X=3452.412mil|Location1.Y=3273.41mil|Location2.Y=3284.66mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.122mm &lt; 0.254mm) Between Pad C10-2(88.05mm,83.9mm) on Bottom Layer And Pad C12-2(88.05mm,82.675mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.122mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3441.162mil|Location2.X=3452.412mil|Location1.Y=3321.639mil|Location2.Y=3332.889mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3441.162mil|Location2.X=3452.412mil|Location1.Y=3321.639mil|Location2.Y=3332.889mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.122mm &lt; 0.254mm) Between Pad C10-2(88.05mm,83.9mm) on Bottom Layer And Pad C8-1(88.05mm,85.125mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.122mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4154.316mil|Location2.X=4165.566mil|Location1.Y=3508.092mil|Location2.Y=3519.342mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4154.316mil|Location2.X=4165.566mil|Location1.Y=3508.092mil|Location2.Y=3519.342mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.122mm &lt; 0.254mm) Between Pad C1-1(106.275mm,89.75mm) on Bottom Layer And Pad C2-1(105.05mm,89.75mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.122mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4156.714mil|Location2.X=4167.964mil|Location1.Y=3503.233mil|Location2.Y=3514.483mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4156.714mil|Location2.X=4167.964mil|Location1.Y=3503.233mil|Location2.Y=3514.483mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.247mm &lt; 0.254mm) Between Pad C1-1(106.275mm,89.75mm) on Bottom Layer And Pad C5-2(106.2mm,88.5mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.247mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4154.316mil|Location2.X=4165.566mil|Location1.Y=3563.21mil|Location2.Y=3574.46mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4154.316mil|Location2.X=4165.566mil|Location1.Y=3563.21mil|Location2.Y=3574.46mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.122mm &lt; 0.254mm) Between Pad C1-2(106.275mm,91.15mm) on Bottom Layer And Pad C2-2(105.05mm,91.15mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.122mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3496.281mil|Location2.X=3507.531mil|Location1.Y=3225.379mil|Location2.Y=3236.629mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3496.281mil|Location2.X=3507.531mil|Location1.Y=3225.379mil|Location2.Y=3236.629mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.112mm &lt; 0.254mm) Between Pad C12-1(89.45mm,82.675mm) on Bottom Layer And Pad MicroUSB B 1-0(88.494mm,80.76mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.112mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3441.162mil|Location2.X=3452.412mil|Location1.Y=3225.379mil|Location2.Y=3236.629mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3441.162mil|Location2.X=3452.412mil|Location1.Y=3225.379mil|Location2.Y=3236.629mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.112mm &lt; 0.254mm) Between Pad C12-2(88.05mm,82.675mm) on Bottom Layer And Pad MicroUSB B 1-0(88.494mm,80.76mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.112mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3906.285mil|Location2.X=3917.535mil|Location1.Y=3155.3mil|Location2.Y=3166.55mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3906.285mil|Location2.X=3917.535mil|Location1.Y=3155.3mil|Location2.Y=3166.55mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.172mm &lt; 0.254mm) Between Pad C13-1(99.975mm,80.85mm) on Bottom Layer And Pad C14-1(98.75mm,79.725mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.172mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3906.285mil|Location2.X=3917.535mil|Location1.Y=3168.525mil|Location2.Y=3179.775mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3906.285mil|Location2.X=3917.535mil|Location1.Y=3168.525mil|Location2.Y=3179.775mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.122mm &lt; 0.254mm) Between Pad C13-1(99.975mm,80.85mm) on Bottom Layer And Pad C14-2(98.75mm,81.125mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.122mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3908.682mil|Location2.X=3919.932mil|Location1.Y=3154.316mil|Location2.Y=3165.566mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3908.682mil|Location2.X=3919.932mil|Location1.Y=3154.316mil|Location2.Y=3165.566mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.172mm &lt; 0.254mm) Between Pad C13-1(99.975mm,80.85mm) on Bottom Layer And Pad Free-5(99.975mm,79.6mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.172mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3906.285mil|Location2.X=3917.535mil|Location1.Y=3210.418mil|Location2.Y=3221.668mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3906.285mil|Location2.X=3917.535mil|Location1.Y=3210.418mil|Location2.Y=3221.668mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.172mm &lt; 0.254mm) Between Pad C13-2(99.975mm,82.25mm) on Bottom Layer And Pad C14-2(98.75mm,81.125mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.172mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3908.682mil|Location2.X=3919.932mil|Location1.Y=3255.202mil|Location2.Y=3266.452mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3908.682mil|Location2.X=3919.932mil|Location1.Y=3255.202mil|Location2.Y=3266.452mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.147mm &lt; 0.254mm) Between Pad C13-2(99.975mm,82.25mm) on Bottom Layer And Pad R2-1(99.975mm,83.35mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.147mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3905.792mil|Location2.X=3917.042mil|Location1.Y=3113.407mil|Location2.Y=3124.657mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3905.792mil|Location2.X=3917.042mil|Location1.Y=3113.407mil|Location2.Y=3124.657mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad C14-1(98.75mm,79.725mm) on Bottom Layer And Pad Free-5(99.975mm,79.6mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3857.269mil|Location2.X=3868.519mil|Location1.Y=3113.407mil|Location2.Y=3124.657mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3857.269mil|Location2.X=3868.519mil|Location1.Y=3113.407mil|Location2.Y=3124.657mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.162mm &lt; 0.254mm) Between Pad C14-1(98.75mm,79.725mm) on Bottom Layer And Pad L2-2(97.475mm,79.48mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.162mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3857.269mil|Location2.X=3868.519mil|Location1.Y=3171.871mil|Location2.Y=3183.121mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3857.269mil|Location2.X=3868.519mil|Location1.Y=3171.871mil|Location2.Y=3183.121mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.162mm &lt; 0.254mm) Between Pad C14-2(98.75mm,81.125mm) on Bottom Layer And Pad L2-1(97.475mm,81.22mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.162mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3691.718mil|Location2.X=3702.968mil|Location1.Y=3098.643mil|Location2.Y=3109.893mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3691.718mil|Location2.X=3702.968mil|Location1.Y=3098.643mil|Location2.Y=3109.893mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.172mm &lt; 0.254mm) Between Pad C15-1(93.275mm,78.675mm) on Bottom Layer And Pad C17-1(94.55mm,79.35mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.172mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3691.718mil|Location2.X=3702.968mil|Location1.Y=3072.068mil|Location2.Y=3083.318mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3691.718mil|Location2.X=3702.968mil|Location1.Y=3072.068mil|Location2.Y=3083.318mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.172mm &lt; 0.254mm) Between Pad C15-1(93.275mm,78.675mm) on Bottom Layer And Pad C17-2(94.55mm,77.95mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.172mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3691.718mil|Location2.X=3702.968mil|Location1.Y=3127.186mil|Location2.Y=3138.436mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3691.718mil|Location2.X=3702.968mil|Location1.Y=3127.186mil|Location2.Y=3138.436mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.172mm &lt; 0.254mm) Between Pad C15-2(93.275mm,80.075mm) on Bottom Layer And Pad C17-1(94.55mm,79.35mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.172mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3691.127mil|Location2.X=3702.377mil|Location1.Y=3148.446mil|Location2.Y=3159.696mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3691.127mil|Location2.X=3702.377mil|Location1.Y=3148.446mil|Location2.Y=3159.696mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.142mm &lt; 0.254mm) Between Pad C15-2(93.275mm,80.075mm) on Bottom Layer And Pad L3-1(94.48mm,80.675mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.142mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3741.914mil|Location2.X=3753.164mil|Location1.Y=3043.525mil|Location2.Y=3054.775mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3741.914mil|Location2.X=3753.164mil|Location1.Y=3043.525mil|Location2.Y=3054.775mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.172mm &lt; 0.254mm) Between Pad C16-1(95.825mm,77.95mm) on Bottom Layer And Pad C17-2(94.55mm,77.95mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.172mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3745.296mil|Location2.X=3756.546mil|Location1.Y=3039.651mil|Location2.Y=3050.901mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3745.296mil|Location2.X=3756.546mil|Location1.Y=3039.651mil|Location2.Y=3050.901mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.197mm &lt; 0.254mm) Between Pad C16-1(95.825mm,77.95mm) on Bottom Layer And Pad Free-5(95.275mm,76.675mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.197mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3741.914mil|Location2.X=3753.164mil|Location1.Y=3098.643mil|Location2.Y=3109.893mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3741.914mil|Location2.X=3753.164mil|Location1.Y=3098.643mil|Location2.Y=3109.893mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.172mm &lt; 0.254mm) Between Pad C16-2(95.825mm,79.35mm) on Bottom Layer And Pad C17-1(94.55mm,79.35mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.172mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3711.832mil|Location2.X=3723.082mil|Location1.Y=3039.651mil|Location2.Y=3050.901mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3711.832mil|Location2.X=3723.082mil|Location1.Y=3039.651mil|Location2.Y=3050.901mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.197mm &lt; 0.254mm) Between Pad C17-2(94.55mm,77.95mm) on Bottom Layer And Pad Free-5(95.275mm,76.675mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.197mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4152.84mil|Location2.X=4164.09mil|Location1.Y=3503.233mil|Location2.Y=3514.483mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4152.84mil|Location2.X=4164.09mil|Location1.Y=3503.233mil|Location2.Y=3514.483mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.251mm &lt; 0.254mm) Between Pad C2-1(105.05mm,89.75mm) on Bottom Layer And Pad C5-2(106.2mm,88.5mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.251mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3908.682mil|Location2.X=3919.932mil|Location1.Y=3559.828mil|Location2.Y=3571.078mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3908.682mil|Location2.X=3919.932mil|Location1.Y=3559.828mil|Location2.Y=3571.078mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.222mm &lt; 0.254mm) Between Pad C3-1(99.925mm,89.9mm) on Bottom Layer And Pad RX1-1(99.875mm,91.225mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.222mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3967.737mil|Location2.X=3978.987mil|Location1.Y=3559.828mil|Location2.Y=3571.078mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3967.737mil|Location2.X=3978.987mil|Location1.Y=3559.828mil|Location2.Y=3571.078mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.222mm &lt; 0.254mm) Between Pad C3-2(101.325mm,89.9mm) on Bottom Layer And Pad RX1-2(101.375mm,91.225mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.222mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3496.28mil|Location2.X=3507.53mil|Location1.Y=3466.324mil|Location2.Y=3477.574mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3496.28mil|Location2.X=3507.53mil|Location1.Y=3466.324mil|Location2.Y=3477.574mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.122mm &lt; 0.254mm) Between Pad C4-1(89.45mm,88.8mm) on Bottom Layer And Pad C6-1(89.45mm,87.575mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.122mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3540.143mil|Location2.X=3551.393mil|Location1.Y=3468.722mil|Location2.Y=3479.972mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3540.143mil|Location2.X=3551.393mil|Location1.Y=3468.722mil|Location2.Y=3479.972mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.222mm &lt; 0.254mm) Between Pad C4-1(89.45mm,88.8mm) on Bottom Layer And Pad FNSLD1-2(90.725mm,88.55mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.222mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3500.218mil|Location2.X=3511.468mil|Location1.Y=3514.552mil|Location2.Y=3525.802mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3500.218mil|Location2.X=3511.468mil|Location1.Y=3514.552mil|Location2.Y=3525.802mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.122mm &lt; 0.254mm) Between Pad C4-1(89.45mm,88.8mm) on Bottom Layer And Pad R1-1(89.5mm,90.025mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.122mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3441.162mil|Location2.X=3452.412mil|Location1.Y=3466.324mil|Location2.Y=3477.574mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3441.162mil|Location2.X=3452.412mil|Location1.Y=3466.324mil|Location2.Y=3477.574mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.122mm &lt; 0.254mm) Between Pad C4-2(88.05mm,88.8mm) on Bottom Layer And Pad C6-2(88.05mm,87.575mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.122mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3441.162mil|Location2.X=3452.412mil|Location1.Y=3514.552mil|Location2.Y=3525.802mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3441.162mil|Location2.X=3452.412mil|Location1.Y=3514.552mil|Location2.Y=3525.802mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.122mm &lt; 0.254mm) Between Pad C4-2(88.05mm,88.8mm) on Bottom Layer And Pad R1-2(88mm,90.025mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.122mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3496.28mil|Location2.X=3507.53mil|Location1.Y=3418.095mil|Location2.Y=3429.345mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3496.28mil|Location2.X=3507.53mil|Location1.Y=3418.095mil|Location2.Y=3429.345mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.122mm &lt; 0.254mm) Between Pad C6-1(89.45mm,87.575mm) on Bottom Layer And Pad C7-1(89.45mm,86.35mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.122mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3540.143mil|Location2.X=3551.393mil|Location1.Y=3462.816mil|Location2.Y=3474.066mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3540.143mil|Location2.X=3551.393mil|Location1.Y=3462.816mil|Location2.Y=3474.066mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.222mm &lt; 0.254mm) Between Pad C6-1(89.45mm,87.575mm) on Bottom Layer And Pad FNSLD1-2(90.725mm,88.55mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.222mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3539.651mil|Location2.X=3550.901mil|Location1.Y=3420.493mil|Location2.Y=3431.743mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3539.651mil|Location2.X=3550.901mil|Location1.Y=3420.493mil|Location2.Y=3431.743mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.197mm &lt; 0.254mm) Between Pad C6-1(89.45mm,87.575mm) on Bottom Layer And Pad VCCLD1-1(90.6mm,87.125mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.197mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3441.162mil|Location2.X=3452.412mil|Location1.Y=3418.095mil|Location2.Y=3429.345mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3441.162mil|Location2.X=3452.412mil|Location1.Y=3418.095mil|Location2.Y=3429.345mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.122mm &lt; 0.254mm) Between Pad C6-2(88.05mm,87.575mm) on Bottom Layer And Pad C7-2(88.05mm,86.35mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.122mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3496.281mil|Location2.X=3507.531mil|Location1.Y=3369.867mil|Location2.Y=3381.117mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3496.281mil|Location2.X=3507.531mil|Location1.Y=3369.867mil|Location2.Y=3381.117mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.122mm &lt; 0.254mm) Between Pad C7-1(89.45mm,86.35mm) on Bottom Layer And Pad C8-2(89.45mm,85.125mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.122mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3539.651mil|Location2.X=3550.901mil|Location1.Y=3402.776mil|Location2.Y=3414.026mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3539.651mil|Location2.X=3550.901mil|Location1.Y=3402.776mil|Location2.Y=3414.026mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.197mm &lt; 0.254mm) Between Pad C7-1(89.45mm,86.35mm) on Bottom Layer And Pad VCCLD1-1(90.6mm,87.125mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.197mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3441.162mil|Location2.X=3452.412mil|Location1.Y=3369.867mil|Location2.Y=3381.117mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3441.162mil|Location2.X=3452.412mil|Location1.Y=3369.867mil|Location2.Y=3381.117mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.122mm &lt; 0.254mm) Between Pad C7-2(88.05mm,86.35mm) on Bottom Layer And Pad C8-1(88.05mm,85.125mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.122mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3442.147mil|Location2.X=3453.397mil|Location1.Y=3562.78mil|Location2.Y=3574.03mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3442.147mil|Location2.X=3453.397mil|Location1.Y=3562.78mil|Location2.Y=3574.03mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.122mm &lt; 0.254mm) Between Pad CHRLD1-1(88.025mm,91.25mm) on Bottom Layer And Pad R1-2(88mm,90.025mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.122mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3501.202mil|Location2.X=3512.452mil|Location1.Y=3562.78mil|Location2.Y=3574.03mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3501.202mil|Location2.X=3512.452mil|Location1.Y=3562.78mil|Location2.Y=3574.03mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.122mm &lt; 0.254mm) Between Pad CHRLD1-2(89.525mm,91.25mm) on Bottom Layer And Pad R1-1(89.5mm,90.025mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.122mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3424.218mil|Location2.X=3435.468mil|Location1.Y=3544.178mil|Location2.Y=3555.428mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3424.218mil|Location2.X=3435.468mil|Location1.Y=3544.178mil|Location2.Y=3555.428mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.167mm &lt; 0.254mm) Between Pad ESP1-1(87.97mm,90.8mm) on Top Layer And Pad ESP1-2(87.97mm,89.53mm) on Top Layer [Top Solder] Mask Sliver [0.167mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3424.218mil|Location2.X=3435.468mil|Location1.Y=3094.178mil|Location2.Y=3105.428mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3424.218mil|Location2.X=3435.468mil|Location1.Y=3094.178mil|Location2.Y=3105.428mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.117mm &lt; 0.254mm) Between Pad ESP1-10(87.97mm,79.37mm) on Top Layer And Pad ESP1-11(87.97mm,78.1mm) on Top Layer [Top Solder] Mask Sliver [0.117mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3424.218mil|Location2.X=3435.468mil|Location1.Y=3144.178mil|Location2.Y=3155.428mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3424.218mil|Location2.X=3435.468mil|Location1.Y=3144.178mil|Location2.Y=3155.428mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.117mm &lt; 0.254mm) Between Pad ESP1-10(87.97mm,79.37mm) on Top Layer And Pad ESP1-9(87.97mm,80.64mm) on Top Layer [Top Solder] Mask Sliver [0.117mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3424.218mil|Location2.X=3435.468mil|Location1.Y=3044.178mil|Location2.Y=3055.428mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3424.218mil|Location2.X=3435.468mil|Location1.Y=3044.178mil|Location2.Y=3055.428mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.117mm &lt; 0.254mm) Between Pad ESP1-11(87.97mm,78.1mm) on Top Layer And Pad ESP1-12(87.97mm,76.83mm) on Top Layer [Top Solder] Mask Sliver [0.117mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3424.218mil|Location2.X=3435.468mil|Location1.Y=2994.178mil|Location2.Y=3005.428mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3424.218mil|Location2.X=3435.468mil|Location1.Y=2994.178mil|Location2.Y=3005.428mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.117mm &lt; 0.254mm) Between Pad ESP1-12(87.97mm,76.83mm) on Top Layer And Pad ESP1-13(87.97mm,75.56mm) on Top Layer [Top Solder] Mask Sliver [0.117mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3424.218mil|Location2.X=3435.468mil|Location1.Y=2944.178mil|Location2.Y=2955.428mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3424.218mil|Location2.X=3435.468mil|Location1.Y=2944.178mil|Location2.Y=2955.428mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.117mm &lt; 0.254mm) Between Pad ESP1-13(87.97mm,75.56mm) on Top Layer And Pad ESP1-14(87.97mm,74.29mm) on Top Layer [Top Solder] Mask Sliver [0.117mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3613.06mil|Location2.X=3624.31mil|Location1.Y=2830.533mil|Location2.Y=2841.783mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3613.06mil|Location2.X=3624.31mil|Location1.Y=2830.533mil|Location2.Y=2841.783mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.117mm &lt; 0.254mm) Between Pad ESP1-15(91.28mm,72.89mm) on Top Layer And Pad ESP1-16(92.55mm,72.89mm) on Top Layer [Top Solder] Mask Sliver [0.117mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3663.06mil|Location2.X=3674.31mil|Location1.Y=2830.533mil|Location2.Y=2841.783mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3663.06mil|Location2.X=3674.31mil|Location1.Y=2830.533mil|Location2.Y=2841.783mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.117mm &lt; 0.254mm) Between Pad ESP1-16(92.55mm,72.89mm) on Top Layer And Pad ESP1-17(93.82mm,72.89mm) on Top Layer [Top Solder] Mask Sliver [0.117mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3713.06mil|Location2.X=3724.31mil|Location1.Y=2830.533mil|Location2.Y=2841.783mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3713.06mil|Location2.X=3724.31mil|Location1.Y=2830.533mil|Location2.Y=2841.783mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.117mm &lt; 0.254mm) Between Pad ESP1-17(93.82mm,72.89mm) on Top Layer And Pad ESP1-18(95.09mm,72.89mm) on Top Layer [Top Solder] Mask Sliver [0.117mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3763.06mil|Location2.X=3774.31mil|Location1.Y=2830.533mil|Location2.Y=2841.783mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3763.06mil|Location2.X=3774.31mil|Location1.Y=2830.533mil|Location2.Y=2841.783mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.117mm &lt; 0.254mm) Between Pad ESP1-18(95.09mm,72.89mm) on Top Layer And Pad ESP1-19(96.36mm,72.89mm) on Top Layer [Top Solder] Mask Sliver [0.117mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3813.06mil|Location2.X=3824.31mil|Location1.Y=2830.533mil|Location2.Y=2841.783mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3813.06mil|Location2.X=3824.31mil|Location1.Y=2830.533mil|Location2.Y=2841.783mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.117mm &lt; 0.254mm) Between Pad ESP1-19(96.36mm,72.89mm) on Top Layer And Pad ESP1-20(97.63mm,72.89mm) on Top Layer [Top Solder] Mask Sliver [0.117mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3424.218mil|Location2.X=3435.468mil|Location1.Y=3494.178mil|Location2.Y=3505.428mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3424.218mil|Location2.X=3435.468mil|Location1.Y=3494.178mil|Location2.Y=3505.428mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.167mm &lt; 0.254mm) Between Pad ESP1-2(87.97mm,89.53mm) on Top Layer And Pad ESP1-3(87.97mm,88.26mm) on Top Layer [Top Solder] Mask Sliver [0.167mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3863.06mil|Location2.X=3874.31mil|Location1.Y=2830.533mil|Location2.Y=2841.783mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3863.06mil|Location2.X=3874.31mil|Location1.Y=2830.533mil|Location2.Y=2841.783mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.117mm &lt; 0.254mm) Between Pad ESP1-20(97.63mm,72.89mm) on Top Layer And Pad ESP1-21(98.9mm,72.89mm) on Top Layer [Top Solder] Mask Sliver [0.117mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3913.06mil|Location2.X=3924.31mil|Location1.Y=2830.533mil|Location2.Y=2841.783mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3913.06mil|Location2.X=3924.31mil|Location1.Y=2830.533mil|Location2.Y=2841.783mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.117mm &lt; 0.254mm) Between Pad ESP1-21(98.9mm,72.89mm) on Top Layer And Pad ESP1-22(100.17mm,72.89mm) on Top Layer [Top Solder] Mask Sliver [0.117mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3963.06mil|Location2.X=3974.31mil|Location1.Y=2830.533mil|Location2.Y=2841.783mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3963.06mil|Location2.X=3974.31mil|Location1.Y=2830.533mil|Location2.Y=2841.783mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.117mm &lt; 0.254mm) Between Pad ESP1-22(100.17mm,72.89mm) on Top Layer And Pad ESP1-23(101.44mm,72.89mm) on Top Layer [Top Solder] Mask Sliver [0.117mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4013.06mil|Location2.X=4024.31mil|Location1.Y=2830.533mil|Location2.Y=2841.783mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4013.06mil|Location2.X=4024.31mil|Location1.Y=2830.533mil|Location2.Y=2841.783mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.117mm &lt; 0.254mm) Between Pad ESP1-23(101.44mm,72.89mm) on Top Layer And Pad ESP1-24(102.71mm,72.89mm) on Top Layer [Top Solder] Mask Sliver [0.117mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4134.847mil|Location2.X=4146.097mil|Location1.Y=2944.178mil|Location2.Y=2955.428mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4134.847mil|Location2.X=4146.097mil|Location1.Y=2944.178mil|Location2.Y=2955.428mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.117mm &lt; 0.254mm) Between Pad ESP1-25(106.02mm,74.29mm) on Top Layer And Pad ESP1-26(106.02mm,75.56mm) on Top Layer [Top Solder] Mask Sliver [0.117mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4134.847mil|Location2.X=4146.097mil|Location1.Y=2994.178mil|Location2.Y=3005.428mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4134.847mil|Location2.X=4146.097mil|Location1.Y=2994.178mil|Location2.Y=3005.428mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.117mm &lt; 0.254mm) Between Pad ESP1-26(106.02mm,75.56mm) on Top Layer And Pad ESP1-27(106.02mm,76.83mm) on Top Layer [Top Solder] Mask Sliver [0.117mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4134.847mil|Location2.X=4146.097mil|Location1.Y=3044.178mil|Location2.Y=3055.428mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4134.847mil|Location2.X=4146.097mil|Location1.Y=3044.178mil|Location2.Y=3055.428mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.117mm &lt; 0.254mm) Between Pad ESP1-27(106.02mm,76.83mm) on Top Layer And Pad ESP1-28(106.02mm,78.1mm) on Top Layer [Top Solder] Mask Sliver [0.117mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4134.847mil|Location2.X=4146.097mil|Location1.Y=3094.178mil|Location2.Y=3105.428mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4134.847mil|Location2.X=4146.097mil|Location1.Y=3094.178mil|Location2.Y=3105.428mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.117mm &lt; 0.254mm) Between Pad ESP1-28(106.02mm,78.1mm) on Top Layer And Pad ESP1-29(106.02mm,79.37mm) on Top Layer [Top Solder] Mask Sliver [0.117mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4134.847mil|Location2.X=4146.097mil|Location1.Y=3144.178mil|Location2.Y=3155.428mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4134.847mil|Location2.X=4146.097mil|Location1.Y=3144.178mil|Location2.Y=3155.428mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.117mm &lt; 0.254mm) Between Pad ESP1-29(106.02mm,79.37mm) on Top Layer And Pad ESP1-30(106.02mm,80.64mm) on Top Layer [Top Solder] Mask Sliver [0.117mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3424.218mil|Location2.X=3435.468mil|Location1.Y=3444.67mil|Location2.Y=3455.92mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3424.218mil|Location2.X=3435.468mil|Location1.Y=3444.67mil|Location2.Y=3455.92mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.142mm &lt; 0.254mm) Between Pad ESP1-3(87.97mm,88.26mm) on Top Layer And Pad ESP1-4(87.97mm,86.99mm) on Top Layer [Top Solder] Mask Sliver [0.142mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4134.847mil|Location2.X=4146.097mil|Location1.Y=3194.178mil|Location2.Y=3205.428mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4134.847mil|Location2.X=4146.097mil|Location1.Y=3194.178mil|Location2.Y=3205.428mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.117mm &lt; 0.254mm) Between Pad ESP1-30(106.02mm,80.64mm) on Top Layer And Pad ESP1-31(106.02mm,81.91mm) on Top Layer [Top Solder] Mask Sliver [0.117mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4134.847mil|Location2.X=4146.097mil|Location1.Y=3244.178mil|Location2.Y=3255.428mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4134.847mil|Location2.X=4146.097mil|Location1.Y=3244.178mil|Location2.Y=3255.428mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.117mm &lt; 0.254mm) Between Pad ESP1-31(106.02mm,81.91mm) on Top Layer And Pad ESP1-32(106.02mm,83.18mm) on Top Layer [Top Solder] Mask Sliver [0.117mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4134.847mil|Location2.X=4146.097mil|Location1.Y=3294.178mil|Location2.Y=3305.428mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4134.847mil|Location2.X=4146.097mil|Location1.Y=3294.178mil|Location2.Y=3305.428mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.117mm &lt; 0.254mm) Between Pad ESP1-32(106.02mm,83.18mm) on Top Layer And Pad ESP1-33(106.02mm,84.45mm) on Top Layer [Top Solder] Mask Sliver [0.117mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4134.847mil|Location2.X=4146.097mil|Location1.Y=3344.178mil|Location2.Y=3355.428mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4134.847mil|Location2.X=4146.097mil|Location1.Y=3344.178mil|Location2.Y=3355.428mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.117mm &lt; 0.254mm) Between Pad ESP1-33(106.02mm,84.45mm) on Top Layer And Pad ESP1-34(106.02mm,85.72mm) on Top Layer [Top Solder] Mask Sliver [0.117mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4134.847mil|Location2.X=4146.097mil|Location1.Y=3394.178mil|Location2.Y=3405.428mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4134.847mil|Location2.X=4146.097mil|Location1.Y=3394.178mil|Location2.Y=3405.428mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.117mm &lt; 0.254mm) Between Pad ESP1-34(106.02mm,85.72mm) on Top Layer And Pad ESP1-35(106.02mm,86.99mm) on Top Layer [Top Solder] Mask Sliver [0.117mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4134.847mil|Location2.X=4146.097mil|Location1.Y=3444.67mil|Location2.Y=3455.92mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4134.847mil|Location2.X=4146.097mil|Location1.Y=3444.67mil|Location2.Y=3455.92mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.142mm &lt; 0.254mm) Between Pad ESP1-35(106.02mm,86.99mm) on Top Layer And Pad ESP1-36(106.02mm,88.26mm) on Top Layer [Top Solder] Mask Sliver [0.142mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4134.847mil|Location2.X=4146.097mil|Location1.Y=3494.178mil|Location2.Y=3505.428mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4134.847mil|Location2.X=4146.097mil|Location1.Y=3494.178mil|Location2.Y=3505.428mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.167mm &lt; 0.254mm) Between Pad ESP1-36(106.02mm,88.26mm) on Top Layer And Pad ESP1-37(106.02mm,89.53mm) on Top Layer [Top Solder] Mask Sliver [0.167mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4134.847mil|Location2.X=4146.097mil|Location1.Y=3544.178mil|Location2.Y=3555.428mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4134.847mil|Location2.X=4146.097mil|Location1.Y=3544.178mil|Location2.Y=3555.428mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.167mm &lt; 0.254mm) Between Pad ESP1-37(106.02mm,89.53mm) on Top Layer And Pad ESP1-38(106.02mm,90.8mm) on Top Layer [Top Solder] Mask Sliver [0.167mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3424.218mil|Location2.X=3435.468mil|Location1.Y=3394.178mil|Location2.Y=3405.428mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3424.218mil|Location2.X=3435.468mil|Location1.Y=3394.178mil|Location2.Y=3405.428mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.117mm &lt; 0.254mm) Between Pad ESP1-4(87.97mm,86.99mm) on Top Layer And Pad ESP1-5(87.97mm,85.72mm) on Top Layer [Top Solder] Mask Sliver [0.117mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3424.218mil|Location2.X=3435.468mil|Location1.Y=3344.178mil|Location2.Y=3355.428mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3424.218mil|Location2.X=3435.468mil|Location1.Y=3344.178mil|Location2.Y=3355.428mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.117mm &lt; 0.254mm) Between Pad ESP1-5(87.97mm,85.72mm) on Top Layer And Pad ESP1-6(87.97mm,84.45mm) on Top Layer [Top Solder] Mask Sliver [0.117mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3424.218mil|Location2.X=3435.468mil|Location1.Y=3294.178mil|Location2.Y=3305.428mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3424.218mil|Location2.X=3435.468mil|Location1.Y=3294.178mil|Location2.Y=3305.428mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.117mm &lt; 0.254mm) Between Pad ESP1-6(87.97mm,84.45mm) on Top Layer And Pad ESP1-7(87.97mm,83.18mm) on Top Layer [Top Solder] Mask Sliver [0.117mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3424.218mil|Location2.X=3435.468mil|Location1.Y=3244.178mil|Location2.Y=3255.428mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3424.218mil|Location2.X=3435.468mil|Location1.Y=3244.178mil|Location2.Y=3255.428mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.117mm &lt; 0.254mm) Between Pad ESP1-7(87.97mm,83.18mm) on Top Layer And Pad ESP1-8(87.97mm,81.91mm) on Top Layer [Top Solder] Mask Sliver [0.117mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3424.218mil|Location2.X=3435.468mil|Location1.Y=3194.178mil|Location2.Y=3205.428mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3424.218mil|Location2.X=3435.468mil|Location1.Y=3194.178mil|Location2.Y=3205.428mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.117mm &lt; 0.254mm) Between Pad ESP1-8(87.97mm,81.91mm) on Top Layer And Pad ESP1-9(87.97mm,80.64mm) on Top Layer [Top Solder] Mask Sliver [0.117mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4070.162mil|Location2.X=4081.412mil|Location1.Y=3446.28mil|Location2.Y=3457.53mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4070.162mil|Location2.X=4081.412mil|Location1.Y=3446.28mil|Location2.Y=3457.53mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad FDFMA1-1(103.85mm,88.105mm) on Bottom Layer And Pad FDFMA1-2(103.2mm,88.105mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4072.068mil|Location2.X=4083.318mil|Location1.Y=3481.088mil|Location2.Y=3492.338mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4072.068mil|Location2.X=4083.318mil|Location1.Y=3481.088mil|Location2.Y=3492.338mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.062mm &lt; 0.254mm) Between Pad FDFMA1-1(103.85mm,88.105mm) on Bottom Layer And Pad FDFMA1-7(103.657mm,89.125mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.062mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4044.572mil|Location2.X=4055.822mil|Location1.Y=3446.28mil|Location2.Y=3457.53mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4044.572mil|Location2.X=4055.822mil|Location1.Y=3446.28mil|Location2.Y=3457.53mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad FDFMA1-2(103.2mm,88.105mm) on Bottom Layer And Pad FDFMA1-3(102.55mm,88.105mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4057.194mil|Location2.X=4068.444mil|Location1.Y=3481.088mil|Location2.Y=3492.338mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4057.194mil|Location2.X=4068.444mil|Location1.Y=3481.088mil|Location2.Y=3492.338mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.062mm &lt; 0.254mm) Between Pad FDFMA1-2(103.2mm,88.105mm) on Bottom Layer And Pad FDFMA1-7(103.657mm,89.125mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.062mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4046.477mil|Location2.X=4057.727mil|Location1.Y=3481.088mil|Location2.Y=3492.338mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4046.477mil|Location2.X=4057.727mil|Location1.Y=3481.088mil|Location2.Y=3492.338mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.062mm &lt; 0.254mm) Between Pad FDFMA1-2(103.2mm,88.105mm) on Bottom Layer And Pad FDFMA1-8(102.743mm,89.125mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.062mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4021.194mil|Location2.X=4032.444mil|Location1.Y=3481.088mil|Location2.Y=3492.338mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4021.194mil|Location2.X=4032.444mil|Location1.Y=3481.088mil|Location2.Y=3492.338mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.062mm &lt; 0.254mm) Between Pad FDFMA1-3(102.55mm,88.105mm) on Bottom Layer And Pad FDFMA1-8(102.743mm,89.125mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.062mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4044.572mil|Location2.X=4055.822mil|Location1.Y=3526.595mil|Location2.Y=3537.845mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4044.572mil|Location2.X=4055.822mil|Location1.Y=3526.595mil|Location2.Y=3537.845mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad FDFMA1-4(102.55mm,90.145mm) on Bottom Layer And Pad FDFMA1-5(103.2mm,90.145mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4021.194mil|Location2.X=4032.444mil|Location1.Y=3525.379mil|Location2.Y=3536.629mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4021.194mil|Location2.X=4032.444mil|Location1.Y=3525.379mil|Location2.Y=3536.629mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.062mm &lt; 0.254mm) Between Pad FDFMA1-4(102.55mm,90.145mm) on Bottom Layer And Pad FDFMA1-8(102.743mm,89.125mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.062mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4070.162mil|Location2.X=4081.412mil|Location1.Y=3526.595mil|Location2.Y=3537.845mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4070.162mil|Location2.X=4081.412mil|Location1.Y=3526.595mil|Location2.Y=3537.845mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad FDFMA1-5(103.2mm,90.145mm) on Bottom Layer And Pad FDFMA1-6(103.85mm,90.145mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4057.194mil|Location2.X=4068.444mil|Location1.Y=3525.379mil|Location2.Y=3536.629mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4057.194mil|Location2.X=4068.444mil|Location1.Y=3525.379mil|Location2.Y=3536.629mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.062mm &lt; 0.254mm) Between Pad FDFMA1-5(103.2mm,90.145mm) on Bottom Layer And Pad FDFMA1-7(103.657mm,89.125mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.062mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4046.477mil|Location2.X=4057.727mil|Location1.Y=3525.379mil|Location2.Y=3536.629mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4046.477mil|Location2.X=4057.727mil|Location1.Y=3525.379mil|Location2.Y=3536.629mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.062mm &lt; 0.254mm) Between Pad FDFMA1-5(103.2mm,90.145mm) on Bottom Layer And Pad FDFMA1-8(102.743mm,89.125mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.062mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4072.068mil|Location2.X=4083.318mil|Location1.Y=3525.379mil|Location2.Y=3536.629mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4072.068mil|Location2.X=4083.318mil|Location1.Y=3525.379mil|Location2.Y=3536.629mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.062mm &lt; 0.254mm) Between Pad FDFMA1-6(103.85mm,90.145mm) on Bottom Layer And Pad FDFMA1-7(103.657mm,89.125mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.062mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3540.143mil|Location2.X=3551.393mil|Location1.Y=3521.871mil|Location2.Y=3533.121mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3540.143mil|Location2.X=3551.393mil|Location1.Y=3521.871mil|Location2.Y=3533.121mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.222mm &lt; 0.254mm) Between Pad FNSLD1-1(90.725mm,90.05mm) on Bottom Layer And Pad R1-1(89.5mm,90.025mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.222mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3550.414mil|Location2.X=3561.664mil|Location1.Y=3560.812mil|Location2.Y=3572.062mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3550.414mil|Location2.X=3561.664mil|Location1.Y=3560.812mil|Location2.Y=3572.062mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.172mm &lt; 0.254mm) Between Pad FNSLD1-1(90.725mm,90.05mm) on Bottom Layer And Pad RLD1-2(90.775mm,91.225mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.172mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3921.477mil|Location2.X=3932.727mil|Location1.Y=2979.119mil|Location2.Y=2990.369mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3921.477mil|Location2.X=3932.727mil|Location1.Y=2979.119mil|Location2.Y=2990.369mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.122mm &lt; 0.254mm) Between Pad Free-5(100.6mm,75.175mm) on Bottom Layer And Pad Free-5(100.6mm,76.45mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.122mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3921.477mil|Location2.X=3932.727mil|Location1.Y=2929.906mil|Location2.Y=2941.156mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3921.477mil|Location2.X=3932.727mil|Location1.Y=2929.906mil|Location2.Y=2941.156mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.072mm &lt; 0.254mm) Between Pad Free-5(100.6mm,75.175mm) on Bottom Layer And Pad R5-1(100.3mm,74.075mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.072mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4003.17mil|Location2.X=4014.42mil|Location1.Y=2979.611mil|Location2.Y=2990.861mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4003.17mil|Location2.X=4014.42mil|Location1.Y=2979.611mil|Location2.Y=2990.861mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad Free-5(102.675mm,75.2mm) on Bottom Layer And Pad Free-5(102.675mm,76.45mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4018.918mil|Location2.X=4030.168mil|Location1.Y=2929.906mil|Location2.Y=2941.156mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4018.918mil|Location2.X=4030.168mil|Location1.Y=2929.906mil|Location2.Y=2941.156mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.122mm &lt; 0.254mm) Between Pad Free-5(102.675mm,75.2mm) on Bottom Layer And Pad R6-1(102.775mm,74.05mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.122mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3907.698mil|Location2.X=3918.948mil|Location1.Y=3102.643mil|Location2.Y=3113.893mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3907.698mil|Location2.X=3918.948mil|Location1.Y=3102.643mil|Location2.Y=3113.893mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.147mm &lt; 0.254mm) Between Pad Free-5(99.95mm,78.3mm) on Bottom Layer And Pad Free-5(99.975mm,79.6mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.147mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4100.611mil|Location2.X=4111.861mil|Location1.Y=3345.261mil|Location2.Y=3356.511mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4100.611mil|Location2.X=4111.861mil|Location1.Y=3345.261mil|Location2.Y=3356.511mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.122mm &lt; 0.254mm) Between Pad Free-7(105.5mm,84.525mm) on Bottom Layer And Pad Free-7(105.5mm,85.7mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.122mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3806.284mil|Location2.X=3817.534mil|Location1.Y=3171.871mil|Location2.Y=3183.121mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3806.284mil|Location2.X=3817.534mil|Location1.Y=3171.871mil|Location2.Y=3183.121mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.182mm &lt; 0.254mm) Between Pad L2-1(97.475mm,81.22mm) on Bottom Layer And Pad L3-2(96.22mm,80.675mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.182mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3806.186mil|Location2.X=3817.436mil|Location1.Y=3212.977mil|Location2.Y=3224.227mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3806.186mil|Location2.X=3817.436mil|Location1.Y=3212.977mil|Location2.Y=3224.227mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.191mm &lt; 0.254mm) Between Pad L2-1(97.475mm,81.22mm) on Bottom Layer And Pad TPS1-4(96.3mm,82.425mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.191mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3806.284mil|Location2.X=3817.534mil|Location1.Y=3146.048mil|Location2.Y=3158.283mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3806.284mil|Location2.X=3817.534mil|Location1.Y=3146.048mil|Location2.Y=3158.283mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.219mm &lt; 0.254mm) Between Pad L2-2(97.475mm,79.48mm) on Bottom Layer And Pad L3-2(96.22mm,80.675mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.219mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3554.816mil|Location2.X=3566.066mil|Location1.Y=2986.903mil|Location2.Y=2998.153mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3554.816mil|Location2.X=3566.066mil|Location1.Y=2986.903mil|Location2.Y=2998.153mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.057mm &lt; 0.254mm) Between Pad MicroUSB B 1-1(91.237mm,75.68mm) on Bottom Layer And Pad MicroUSB B 1-2(91.237mm,76.34mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.057mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3554.816mil|Location2.X=3566.066mil|Location1.Y=3012.903mil|Location2.Y=3024.153mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3554.816mil|Location2.X=3566.066mil|Location1.Y=3012.903mil|Location2.Y=3024.153mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.057mm &lt; 0.254mm) Between Pad MicroUSB B 1-2(91.237mm,76.34mm) on Bottom Layer And Pad MicroUSB B 1-3(91.237mm,77.001mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.057mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3554.816mil|Location2.X=3566.066mil|Location1.Y=3038.903mil|Location2.Y=3050.153mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3554.816mil|Location2.X=3566.066mil|Location1.Y=3038.903mil|Location2.Y=3050.153mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.057mm &lt; 0.254mm) Between Pad MicroUSB B 1-3(91.237mm,77.001mm) on Bottom Layer And Pad MicroUSB B 1-4(91.237mm,77.661mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.057mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3554.816mil|Location2.X=3566.066mil|Location1.Y=3064.903mil|Location2.Y=3076.153mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3554.816mil|Location2.X=3566.066mil|Location1.Y=3064.903mil|Location2.Y=3076.153mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.057mm &lt; 0.254mm) Between Pad MicroUSB B 1-4(91.237mm,77.661mm) on Bottom Layer And Pad MicroUSB B 1-5(91.237mm,78.322mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.057mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3640.536mil|Location2.X=3651.786mil|Location1.Y=2905.729mil|Location2.Y=2916.979mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3640.536mil|Location2.X=3651.786mil|Location1.Y=2905.729mil|Location2.Y=2916.979mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.222mm &lt; 0.254mm) Between Pad R3-1(91.95mm,74.4mm) on Bottom Layer And Pad R4-1(93.275mm,74.4mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.222mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3640.536mil|Location2.X=3651.786mil|Location1.Y=2846.674mil|Location2.Y=2857.924mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3640.536mil|Location2.X=3651.786mil|Location1.Y=2846.674mil|Location2.Y=2857.924mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.222mm &lt; 0.254mm) Between Pad R3-2(91.95mm,72.9mm) on Bottom Layer And Pad R4-2(93.275mm,72.9mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.222mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4064.749mil|Location2.X=4075.999mil|Location1.Y=2838.8mil|Location2.Y=2850.05mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4064.749mil|Location2.X=4075.999mil|Location1.Y=2838.8mil|Location2.Y=2850.05mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.122mm &lt; 0.254mm) Between Pad R6-2(102.775mm,72.55mm) on Bottom Layer And Pad R7-1(103.9mm,72.8mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.122mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3609.47mil|Location2.X=3620.72mil|Location1.Y=3560.812mil|Location2.Y=3572.062mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3609.47mil|Location2.X=3620.72mil|Location1.Y=3560.812mil|Location2.Y=3572.062mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.172mm &lt; 0.254mm) Between Pad RLD1-1(92.275mm,91.225mm) on Bottom Layer And Pad RLD2-1(92.175mm,90.05mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.172mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3753.233mil|Location2.X=3764.483mil|Location1.Y=3402.777mil|Location2.Y=3414.027mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3753.233mil|Location2.X=3764.483mil|Location1.Y=3402.777mil|Location2.Y=3414.027mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.147mm &lt; 0.254mm) Between Pad RLD3-2(94.95mm,87.125mm) on Bottom Layer And Pad RTERM1-2(96mm,87.125mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.147mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3597.721mil|Location2.X=3608.971mil|Location1.Y=3315.178mil|Location2.Y=3326.428mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3597.721mil|Location2.X=3608.971mil|Location1.Y=3315.178mil|Location2.Y=3326.428mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad SC1-1(91.05mm,85mm) on Bottom Layer And Pad SC1-2(92mm,85mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3635.123mil|Location2.X=3646.373mil|Location1.Y=3315.178mil|Location2.Y=3326.428mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3635.123mil|Location2.X=3646.373mil|Location1.Y=3315.178mil|Location2.Y=3326.428mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad SC1-2(92mm,85mm) on Bottom Layer And Pad SC1-3(92.95mm,85mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3729.611mil|Location2.X=3740.861mil|Location1.Y=3308.288mil|Location2.Y=3319.538mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3729.611mil|Location2.X=3740.861mil|Location1.Y=3308.288mil|Location2.Y=3319.538mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad TPS1-1(94.4mm,84.825mm) on Bottom Layer And Pad TPS1-2(95.35mm,84.825mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3767.013mil|Location2.X=3778.263mil|Location1.Y=3308.288mil|Location2.Y=3319.538mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3767.013mil|Location2.X=3778.263mil|Location1.Y=3308.288mil|Location2.Y=3319.538mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad TPS1-2(95.35mm,84.825mm) on Bottom Layer And Pad TPS1-3(96.3mm,84.825mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3835.91mil|Location2.X=3847.16mil|Location1.Y=3307.107mil|Location2.Y=3318.357mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3835.91mil|Location2.X=3847.16mil|Location1.Y=3307.107mil|Location2.Y=3318.357mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.047mm &lt; 0.254mm) Between Pad TPS2-1(97.325mm,84.645mm) on Bottom Layer And Pad TPS2-2(97.825mm,84.645mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.047mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3855.595mil|Location2.X=3866.845mil|Location1.Y=3307.107mil|Location2.Y=3318.357mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3855.595mil|Location2.X=3866.845mil|Location1.Y=3307.107mil|Location2.Y=3318.357mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.047mm &lt; 0.254mm) Between Pad TPS2-2(97.825mm,84.645mm) on Bottom Layer And Pad TPS2-3(98.325mm,84.645mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.047mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3875.28mil|Location2.X=3886.53mil|Location1.Y=3307.107mil|Location2.Y=3318.357mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3875.28mil|Location2.X=3886.53mil|Location1.Y=3307.107mil|Location2.Y=3318.357mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.047mm &lt; 0.254mm) Between Pad TPS2-3(98.325mm,84.645mm) on Bottom Layer And Pad TPS2-4(98.825mm,84.645mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.047mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3875.28mil|Location2.X=3886.53mil|Location1.Y=3224.824mil|Location2.Y=3236.074mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3875.28mil|Location2.X=3886.53mil|Location1.Y=3224.824mil|Location2.Y=3236.074mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.047mm &lt; 0.254mm) Between Pad TPS2-5(98.825mm,82.555mm) on Bottom Layer And Pad TPS2-6(98.325mm,82.555mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.047mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3855.595mil|Location2.X=3866.845mil|Location1.Y=3224.824mil|Location2.Y=3236.074mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3855.595mil|Location2.X=3866.845mil|Location1.Y=3224.824mil|Location2.Y=3236.074mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.047mm &lt; 0.254mm) Between Pad TPS2-6(98.325mm,82.555mm) on Bottom Layer And Pad TPS2-7(97.825mm,82.555mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.047mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3835.91mil|Location2.X=3847.16mil|Location1.Y=3224.824mil|Location2.Y=3236.074mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\David\Desktop\TFM GLOBAL\sensores\wearable\Smartstrap_small\MainDesign_Small.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3835.91mil|Location2.X=3847.16mil|Location1.Y=3224.824mil|Location2.Y=3236.074mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.047mm &lt; 0.254mm) Between Pad TPS2-7(97.825mm,82.555mm) on Bottom Layer And Pad TPS2-8(97.325mm,82.555mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.047mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>
