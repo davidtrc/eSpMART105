@@ -1,11 +1,12 @@
 # eSpMART105
 A wearable device with BLE communication through Android App for elderly people monitor.
 The eSpMART105 has the following capabilities:
-    Heart Rate calculation using MAX30102
-    Oxygen saturation calculation using MAX30102
-    Body temperature using MAX30205
-    Propietary fall detection algorithm
-    Communication with an Android Application also developed specially for this wearable.
+
+*Heart Rate calculation using MAX30102
+*Oxygen saturation calculation using MAX30102
+*Body temperature using MAX30205
+*Propietary fall detection algorithm
+*Communication with an Android Application also developed specially for this wearable.
     
 The eSpMART105 is focused in low size and low power consumption.
 The Android App allow us to visualize the data of the wearable, as well as modify some settings of it.
